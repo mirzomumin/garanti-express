@@ -44,10 +44,10 @@ INSTALLED_APPS = [
     'phonenumber_field',
 
     # My apps
-    'product.apps.ProductConfig',
-    'product_category.apps.ProductCategoryConfig',
-    'product_feature.apps.ProductFeatureConfig',
-    'product_review.apps.ProductReviewConfig',
+    'products.product.apps.ProductConfig',
+    'products.product_category.apps.ProductCategoryConfig',
+    'products.product_feature.apps.ProductFeatureConfig',
+    'products.product_review.apps.ProductReviewConfig',
     'user.apps.UserConfig',
     'seller.apps.SellerConfig',
 ]
