@@ -1,7 +1,7 @@
 from django.db import models
 
 from helpers.models import BaseModel
-from product_category.models import Department, Category, Brand
+from products.product_category.models import Department, Category, Brand
 
 # Create your models here.
 

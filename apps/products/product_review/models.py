@@ -1,7 +1,7 @@
 from django.db import models
 
 from helpers.models import BaseModel
-from product.models import ProductStock
+from products.product.models import ProductStock
 # Create your models here.
 
 
