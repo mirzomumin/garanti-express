@@ -56,6 +56,8 @@ class Country(BaseModel):
 
 
 class Region(BaseModel):
+	country = models.ForeignKey(Country, on_delete=models.CASCADE,
+		related_name='regions')
 	name = models.CharField(max_length=255)
 
 	def __str__(self):
@@ -63,6 +65,8 @@ class Region(BaseModel):
 
 
 class City(BaseModel):
+	region = models.ForeignKey(Region, on_delete=models.CASCADE,
+		related_name='cities')
 	name = models.CharField(max_length=255)
 
 	def __str__(self):
