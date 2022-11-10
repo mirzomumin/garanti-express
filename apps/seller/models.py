@@ -5,7 +5,7 @@ from multiselectfield import MultiSelectField
 
 from helpers.models import BaseModel
 from user.models import CustomUser
-from product_category.models import Category
+from products.product_category.models import Category
 # Create your models here.
 
 class Contact(BaseModel):
