@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import sys
 
-from . import my_settings
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(BASE_DIR.joinpath('apps')))
@@ -43,13 +41,15 @@ INSTALLED_APPS = [
 
     # Third part apps
     'multiselectfield',
+    'phonenumber_field',
 
     # My apps
-    'user.apps.UserConfig',
     'product.apps.ProductConfig',
     'product_category.apps.ProductCategoryConfig',
     'product_feature.apps.ProductFeatureConfig',
     'product_review.apps.ProductReviewConfig',
+    'user.apps.UserConfig',
+    'seller.apps.SellerConfig',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +128,11 @@ MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'user.CustomUser'
+
+
+try:
+    from .my_settings import *  # noqa
+except ImportError:
+    pass # noqa
