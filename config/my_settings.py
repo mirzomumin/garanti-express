@@ -3,7 +3,7 @@
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postrgreql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'garanti_express',
         'USER': 'postgres',
         'PASSWORD': '1sakura1',
