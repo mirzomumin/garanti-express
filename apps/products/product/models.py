@@ -1,7 +1,12 @@
 from django.db import models
 
 from helpers.models import BaseModel
+<<<<<<< HEAD:apps/product/models.py
+from product_category.models import Department, Category, Brand
+from seller.models import Seller
+=======
 from products.product_category.models import Department, Category, Brand
+>>>>>>> diyorbek:apps/products/product/models.py
 
 # Create your models here.
 
@@ -31,6 +36,8 @@ class Product(BaseModel):
 	category = models.ForeignKey(Category,
 		on_delete=models.CASCADE, related_name='products')
 	brand = models.ForeignKey(Brand,
+		on_delete=models.CASCADE, related_name='products')
+	seller = models.ForeignKey(Seller,
 		on_delete=models.CASCADE, related_name='products')
 
 
@@ -71,3 +78,52 @@ class Media(BaseModel):
 	image = models.ImageField(upload_to='products/images/')
 	video = models.FileField(upload_to='products/videos/')
 	is_image = models.BooleanField(default=True)
+
+
+class Coupon(BaseModel):
+	STATUS = (
+		('seller', 'seller'),
+		('category', 'category'),
+		('product', 'product'),
+		('general', 'general'),
+		('brand', 'brand')
+	)
+	limit_amount = models.PositiveIntegerField()
+	limit_quantity = models.PositiveIntegerField()
+	status = models.CharField(max_length=20, choices=STATUS)
+
+	# Relations
+	seller = models.ForeignKey(Seller, on_delete=models.CASCADE,
+		related_name='coupons')
+	category = models.ManyToManyField(Category,
+		related_name='coupons')
+	product = models.ManyToManyField(Product,
+		related_name='coupons')
+	brand = models.ManyToManyField(Brand,
+		related_name='coupons')
+
+
+class Collection(BaseModel):
+	STATUS = (
+		('seller', 'seller'),
+		('category', 'category'),
+		('product', 'product'),
+		('general', 'general'),
+		('brand', 'brand')
+	)
+	name = models.CharField(max_length=255)
+	image = models.ImageField(upload_to='products/collections/')
+	status = models.CharField(max_length=20, choices=STATUS)
+
+	# Relations
+	seller = models.ForeignKey(Seller, on_delete=models.CASCADE,
+		related_name='collections')
+	category = models.ManyToManyField(Category,
+		related_name='collections')
+	product = models.ManyToManyField(Product,
+		related_name='collections')
+	brand = models.ManyToManyField(Brand,
+		related_name='collections')
+
+	def __str__(self):
+		return self.name
