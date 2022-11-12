@@ -60,24 +60,23 @@ class Country(BaseModel):
 
 
 class Region(BaseModel):
+    country = models.ForeignKey(Country, on_delete=models.CASCADE,
+                                related_name='regions'),
+    name = models.CharField(max_length=255)
 
-	country = models.ForeignKey(Country, on_delete=models.CASCADE,
-		related_name='regions')
-	name = models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.name
+def __str__(self):
+    return self.name
 
 
 class City(BaseModel):
+    region = models.ForeignKey(Region, on_delete=models.CASCADE,
+                               related_name='cities'),
+    name = models.CharField(max_length=255)
 
-	region = models.ForeignKey(Region, on_delete=models.CASCADE,
-		related_name='cities')
-	name = models.CharField(max_length=255)
 
-
-    def __str__(self):
-        return self.name
+def __str__(self):
+    return self.name
 
 
 class BankInformation(BaseModel):
