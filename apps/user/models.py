@@ -68,12 +68,3 @@ class CustomUser(AbstractBaseUser):
 
     # hook the user manager to objects
     objects = CustomUserManager()
-
-# class UserOtp(BaseModel):
-#     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
-#     key = models.PositiveIntegerField(null=True)
-#     phone_number = models.CharField(max_length=15, unique=True, null=True)
-
-#     def __str__(self):
-#         return f'User full name: {self.user.get_full_name()}.\
-#         User phone: {self.phone_number}. Key: {self.key}'
