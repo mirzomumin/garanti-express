@@ -21,4 +21,3 @@ class SetNewPasswordSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(min_length=6, max_length=68, write_only=True)
     otp = serializers.CharField()
-

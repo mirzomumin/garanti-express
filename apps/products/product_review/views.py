@@ -10,9 +10,12 @@ class ProductQuestionViewset(viewsets.ModelViewSet):
     queryset = ProductQuestion.objects.all()
     serializer_class = ProductQuestionSerializer
 
+
 class ReviewViewset(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
+
+
 class MediaReviewViewset(viewsets.ModelViewSet):
     queryset = MediaReview.objects.all()
     serializer_class = MediaReviewSerializer
