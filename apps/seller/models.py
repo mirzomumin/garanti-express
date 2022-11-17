@@ -64,9 +64,8 @@ class Region(BaseModel):
                                 related_name='regions'),
     name = models.CharField(max_length=255)
 
-
-def __str__(self):
-    return self.name
+    def __str__(self):
+        return self.name
 
 
 class City(BaseModel):
@@ -75,8 +74,8 @@ class City(BaseModel):
     name = models.CharField(max_length=255)
 
 
-def __str__(self):
-    return self.name
+    def __str__(self):
+        return self.name
 
 
 class BankInformation(BaseModel):
