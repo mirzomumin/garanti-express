@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 
-from apps.products.product.models import Product, Color, ProductStock, Media
-from apps.products.product.serializers import ProductSerializer, ColorSerializer, MediaSerializer, \
+from products.product.models import Product, Color, ProductStock, Media
+from products.product.serializers.serializers import ProductSerializer, ColorSerializer, MediaSerializer, \
     ProductStockSerializer
 
 

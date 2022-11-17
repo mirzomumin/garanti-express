@@ -37,6 +37,8 @@ class Product(BaseModel):
     seller = models.ForeignKey(Seller,
                                on_delete=models.CASCADE, related_name='products')
 
+
+
     def __str__(self):
         return self.title
 
@@ -66,6 +68,7 @@ class ProductStock(BaseModel):
                                 related_name='product_stocks')
     color = models.ForeignKey(Color, on_delete=models.CASCADE,
                               related_name='product_stocks')
+
 
 
 class Media(BaseModel):

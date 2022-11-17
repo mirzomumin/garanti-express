@@ -4,7 +4,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="181">
+          <list size="183">
             <item index="0" class="java.lang.String" itemvalue="tzlocal" />
             <item index="1" class="java.lang.String" itemvalue="Babel" />
             <item index="2" class="java.lang.String" itemvalue="PyYAML" />
@@ -186,6 +186,8 @@
             <item index="178" class="java.lang.String" itemvalue="ez-setup" />
             <item index="179" class="java.lang.String" itemvalue="click-repl" />
             <item index="180" class="java.lang.String" itemvalue="click-plugins" />
+            <item index="181" class="java.lang.String" itemvalue="psycopg2" />
+            <item index="182" class="java.lang.String" itemvalue="django-admin-thumbnails" />
           </list>
         </value>
       </option>
