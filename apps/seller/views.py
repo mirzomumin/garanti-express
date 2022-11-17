@@ -16,9 +16,9 @@ class SellerViewset(viewsets.ModelViewSet):
     @action(methods=['post'], detail=False)
     def post(self, request):
         data = request.data.get("data")
-        address = data.pop("addresses")
-        finance_contact = data.pop("finance_contact")
-        manager_contact = data.pop("manager_contact")
+        address = data["addresses"]
+        finance_contact = data["finance_contact"]
+        manager_contact = data["manager_contact"]
         # print(address)
         address_serializer = AddressSerializer(data=address, many=True)
         finance_contact_serializer = ContactSerializer(data=finance_contact)
@@ -30,13 +30,13 @@ class SellerViewset(viewsets.ModelViewSet):
         if not manager_contact_serializer.is_valid():
             return Response(manager_contact_serializer.errors, status=HTTP_400_BAD_REQUEST)
 
-        email = data.pop('email')
+        email = data['email']
         user = CustomUser.objects.filter(email=email)
         if user.exists():
-            user.last().legal_name = data.pop('legal_name')
-            user.last().brand_name = data.pop('brand_name')
-            user.last().phone = data.pop('phone')
-            user.last().set_password(data.pop('password'))
+            user.last().legal_name = data['legal_name']
+            user.last().brand_name = data['brand_name']
+            user.last().phone = data['phone_number']
+            user.last().set_password(data['password'])
             user.last().save()
         else:
             return Response({"error": "User doesn't exists"}, status=HTTP_400_BAD_REQUEST)
