@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     # Third part apps
     'multiselectfield',
     'phonenumber_field',
+    'rest_framework',
+    'rest_framework.authtoken',
 
     # My apps
     'products.product.apps.ProductConfig',

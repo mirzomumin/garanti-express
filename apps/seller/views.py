@@ -3,7 +3,6 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_200_OK, HTTP_201_CREATED
 
-
 from seller.models import Seller, FirmCategory, Country, Region, City, BankInformation
 from .serializers import *
 from user.models import CustomUser
@@ -15,7 +14,7 @@ class SellerViewset(viewsets.ModelViewSet):
 
     @action(methods=['post'], detail=False)
     def post(self, request):
-        data = request.data.get("data")
+        data = request.data.get("data")['data']
         address = data["addresses"]
         finance_contact = data["finance_contact"]
         manager_contact = data["manager_contact"]
@@ -33,11 +32,12 @@ class SellerViewset(viewsets.ModelViewSet):
         email = data['email']
         user = CustomUser.objects.filter(email=email)
         if user.exists():
-            user.last().legal_name = data['legal_name']
-            user.last().brand_name = data['brand_name']
-            user.last().phone = data['phone_number']
-            user.last().set_password(data['password'])
-            user.last().save()
+            us = user.last()
+            us.legal_name = data['legal_name']
+            us.brand_name = data['brand_name']
+            us.phone = data['phone_number']
+            us.set_password(data['password'])
+            us.save()
         else:
             return Response({"error": "User doesn't exists"}, status=HTTP_400_BAD_REQUEST)
 
