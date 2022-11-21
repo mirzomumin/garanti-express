@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework.authtoken.models import Token
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_200_OK, HTTP_201_CREATED
@@ -15,15 +16,15 @@ class SellerViewset(viewsets.ModelViewSet):
     @action(methods=['post'], detail=False)
     def post(self, request):
         data = request.data.get("data")['data']
-        address = data["addresses"]
+        # address = data["addresses"]
         finance_contact = data["finance_contact"]
         manager_contact = data["manager_contact"]
         # print(address)
-        address_serializer = AddressSerializer(data=address, many=True)
+        # address_serializer = AddressSerializer(data=address, many=True)
         finance_contact_serializer = ContactSerializer(data=finance_contact)
         manager_contact_serializer = ContactSerializer(data=manager_contact)
-        if not address_serializer.is_valid():
-            return Response(address_serializer.errors, status=HTTP_400_BAD_REQUEST)
+        # if not address_serializer.is_valid():
+        #     return Response(address_serializer.errors, status=HTTP_400_BAD_REQUEST)
         if not finance_contact_serializer.is_valid():
             return Response(finance_contact_serializer.errors, status=HTTP_400_BAD_REQUEST)
         if not manager_contact_serializer.is_valid():
@@ -43,20 +44,21 @@ class SellerViewset(viewsets.ModelViewSet):
 
         # Create Instances
 
-        address_serializer.save()
+        # address_serializer.save()
         finance_contact_serializer.save()
         manager_contact_serializer.save()
 
         # Get id from Instances
 
-        address_instances = [i.get('id') for i in address_serializer.data]
+        # address_instances = [i.get('id') for i in address_serializer.data]
         finance_contact_instance = finance_contact_serializer.data.get('id')
         manager_contact_instance = manager_contact_serializer.data.get('id')
 
         # Create full seller object
-
+        token, created = Token.objects.get_or_create(user=user.last())
         data['user'] = user.last().id
-        data['addresses'] = address_instances
+        data['token'] = token.key,
+        # data['addresses'] = address_instances
         data['finance_contact'] = finance_contact_instance
         data['manager_contact'] = manager_contact_instance
         seller_instance = SellerSerializer(data=data)
