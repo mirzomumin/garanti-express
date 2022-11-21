@@ -91,7 +91,7 @@ class Seller(BaseModel):
     website_url = models.URLField(null=True, blank=True)
     referal_code = models.CharField(max_length=255, null=True, blank=True)
     bank_information_number = models.PositiveIntegerField()
-    logo = models.ImageField(upload_to='logo/', null=True, blank=True)
+    # logo = models.ImageField(upload_to='logo/', null=True, blank=True)
 
     # Relations
     user = models.OneToOneField(CustomUser,
