@@ -18,7 +18,6 @@ class SellerViewset(viewsets.ModelViewSet):
     @action(methods=['post'], detail=False)
     def post(self, request):
         data = request.data.get("data")
-        data = json.loads(data)
         address = data["addresses"]
         finance_contact = data["finance_contact"]
         manager_contact = data["manager_contact"]
