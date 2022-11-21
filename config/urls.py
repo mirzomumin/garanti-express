@@ -20,11 +20,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from seller.urls import router as seller_router
+from products.product_category.urls import router as product_category_router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('seller.registration_urls')),
     path('api/v1/', include(seller_router.urls)),
+    path('api/v1/products/', include(product_category_router.urls)),
     path('api/v1/products/', include('products.product.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

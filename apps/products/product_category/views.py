@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 
-from apps.products.product_category.models import Department, Category, Brand
-from apps.products.product_category.serializers import DepartmentSerializer, CategorySerializer, BrandSerializer
+from products.product_category.models import Department, Category, Brand
+from products.product_category.serializers import DepartmentSerializer, CategorySerializer, BrandSerializer
 
 
 # Create your views here.
