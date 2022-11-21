@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a2cdd89c-d165-4541-84f8-72566daaaeb4" name="Changes" comment="fix and merge all changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/seller/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/seller/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +98,7 @@
       <workItem from="1668421103034" duration="3815000" />
       <workItem from="1668512477548" duration="599000" />
       <workItem from="1668660841527" duration="1123000" />
-      <workItem from="1668662001584" duration="5670000" />
+      <workItem from="1668662001584" duration="6232000" />
     </task>
     <task id="LOCAL-00001" summary="change structure">
       <created>1668075343022</created>
