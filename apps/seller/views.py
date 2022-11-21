@@ -157,6 +157,15 @@ class BankInformationViewset(viewsets.ModelViewSet):
         serializer = GetBankInformationSerializer(bank_informations, many=True)
         return Response(serializer.data, status=HTTP_200_OK)
 
+    @action(methods=['get'], detail=False)
+    def get_list(self, request):
+        firm_category_id = request.GET.get("id")
+        bank_informations = BankInformation.objects.filter(
+            firm_category__id=firm_category_id
+        ).all()
+        serializer = GetBankInformationSerializer(bank_informations, many=True)
+        return Response(serializer.data, status=HTTP_200_OK)
+
 
 class DeliveryCategoryViewset(viewsets.ModelViewSet):
     queryset = DeliveryCategory.objects.all()
