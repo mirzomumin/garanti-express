@@ -15,7 +15,7 @@ class CustomUser(AbstractBaseUser):
     legal_name = models.CharField(max_length=255, null=True, blank=True)
     brand_name = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField(unique=True)
-    phone = PhoneNumberField()
+    phone = models.CharField(max_length=20)
     status = models.CharField(max_length=10, choices=STATUS, default="seller")
 
     created_at = models.DateTimeField(auto_now_add=True, null=True)
