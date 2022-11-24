@@ -5,6 +5,8 @@ from rest_framework.authtoken.models import Token
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_200_OK, HTTP_201_CREATED
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 from seller.models import Seller, FirmCategory, Country, Region, City, BankInformation
 from .serializers import *
@@ -86,12 +88,6 @@ class FirmCategoryViewset(viewsets.ModelViewSet):
     queryset = FirmCategory.objects.all()
     serializer_class = FirmCategorySerializer
 
-    @action(methods=['get'], detail=False)
-    def get_list(self, request):
-        firm_categories = FirmCategory.objects.all()
-        serializer = GetFirmCategorySerializer(firm_categories, many=True)
-        return Response(serializer.data, status=HTTP_200_OK)
-
 
 class CountryViewset(viewsets.ModelViewSet):
     queryset = Country.objects.all()
@@ -123,20 +119,47 @@ class CountryViewset(viewsets.ModelViewSet):
 class RegionViewset(viewsets.ModelViewSet):
     queryset = Region.objects.all()
     serializer_class = RegionSerializer
+    country_id = openapi.Parameter('country_id', openapi.IN_QUERY,
+        description="country_id manual param", type=openapi.TYPE_INTEGER)
+
+    @swagger_auto_schema(method='get', manual_parameters=[country_id])
+    @action(methods=['get'], detail=False)
+    def country_regions(self, request):
+        country_id = request.query_params.get("country_id")
+        regioins = Region.objects.filter(
+            country__id=country_id
+        ).all()
+        serializer = GetRegionSerializer(regioins, many=True)
+        return Response(serializer.data, status=HTTP_200_OK)
 
 
 class CityViewset(viewsets.ModelViewSet):
     queryset = City.objects.all()
     serializer_class = CitySerializer
+    region_id = openapi.Parameter('region_id', openapi.IN_QUERY,
+        description="region_id manual param", type=openapi.TYPE_INTEGER)
+
+    @swagger_auto_schema(method='get', manual_parameters=[region_id])
+    @action(methods=['get'], detail=False)
+    def region_cities(self, request):
+        region_id = request.query_params.get("region_id")
+        cities = City.objects.filter(
+            region__id=region_id
+        ).values('id', 'name', 'region')
+        serializer = GetCitySerializer(cities, many=True)
+        return Response(serializer.data, status=HTTP_200_OK)
 
 
 class BankInformationViewset(viewsets.ModelViewSet):
     queryset = BankInformation.objects.all()
     serializer_class = BankInformationSerializer
+    firm_category_id = openapi.Parameter('firm_category_id', openapi.IN_QUERY,
+        description="firm_category_id manual param", type=openapi.TYPE_INTEGER)
 
+    @swagger_auto_schema(method='get', manual_parameters=[firm_category_id])
     @action(methods=['get'], detail=False)
-    def get_list(self, request):
-        firm_category_id = request.GET.get("firm_category_id")
+    def category_info(self, request):
+        firm_category_id = request.query_params.get("firm_category_id")
         bank_informations = BankInformation.objects.filter(
             firm_category__id=firm_category_id
         ).all()
