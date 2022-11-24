@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a2cdd89c-d165-4541-84f8-72566daaaeb4" name="Changes" comment="add seller registration">
+      <change afterPath="$PROJECT_DIR$/apps/products/product/serializers/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/products/product/serializers/create_product.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/products/product/serializers/get_product_detail.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/products/product/serializers/get_product_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/products/product/serializers/update_product.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/products/product/views/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/products/product/views/create_product.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/products/product/views/delete_product.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/products/product/views/get_product_detail.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/products/product/views/get_product_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/products/product/views/update_product.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/garanti-express.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/products/product/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/products/product/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/products/product/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/products/product/serializers/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/products/product/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/products/product/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/products/product/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/products/product/views/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/seller/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/seller/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/seller/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/seller/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/seller/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/seller/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/my_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/my_settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HLpUX1xTgpyxeRjnx642mzMmAn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/macbookpro/Documents/Documents/projects/garanti-express&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps/products/product_review" />
+      <recent name="$PROJECT_DIR$/apps/products/product_feature" />
+      <recent name="$PROJECT_DIR$/apps/products/product_category" />
+      <recent name="$PROJECT_DIR$/apps/products/product" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps/products/product/serializers" />
+      <recent name="$PROJECT_DIR$/apps/products/product/views" />
+      <recent name="$PROJECT_DIR$/apps/products" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="garanti-express" type="Python.DjangoServer" factoryName="Django server">
+      <module name="garanti-express" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a2cdd89c-d165-4541-84f8-72566daaaeb4" name="Changes" comment="" />
+      <created>1668074234854</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668074234854</updated>
+      <workItem from="1668074237282" duration="17413000" />
+      <workItem from="1668158044773" duration="13877000" />
+      <workItem from="1668421103034" duration="3815000" />
+      <workItem from="1668512477548" duration="599000" />
+      <workItem from="1668660841527" duration="1123000" />
+      <workItem from="1668662001584" duration="1349000" />
+    </task>
+    <task id="LOCAL-00001" summary="change structure">
+      <created>1668075343022</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668075343022</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add seller registration">
+      <created>1668185944739</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1668185944740</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add seller registration">
+      <created>1668249361696</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668249361696</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add seller registration">
+      <created>1668249853924</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668249853924</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add seller registration">
+      <created>1668661462765</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1668661462765</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="change structure" />
+    <MESSAGE value="add seller registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="add seller registration" />
+  </component>
+</project>

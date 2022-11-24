@@ -15,10 +15,12 @@ class RegisterAPI(APIView):
             serializer = UserSerializer(data=data)
             if serializer.is_valid():
                 serializer.save()
-                send_otp_via_email(serializer.data['email'])
+                otp = send_otp_via_email(serializer.data['email'])
                 return Response({
                     'message': 'registration successfully check email',
                     'data': serializer.data,
+                    'otp': otp,
+
                 }, status=status.HTTP_201_CREATED)
 
             return Response({
