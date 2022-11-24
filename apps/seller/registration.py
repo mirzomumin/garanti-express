@@ -1,4 +1,7 @@
 import email
+
+from django.contrib.auth import authenticate
+from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -140,3 +143,25 @@ class SetNewPasswordAPI(APIView):
             return Response({
                 'error': str(e),
             }, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LoginAPI(APIView):
+    def post(self, request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+        users = CustomUser.objects.filter(email=email)
+        if users.exists():
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                token, created = Token.objects.get_or_create(user=users.last())
+                text = {
+                    "token": token.key,
+                    "user": {
+                        "id": users.last().id,
+                        "legal_name": users.last().legal_name
+                    }
+                }
+                return Response(text, status=200)
+
+            return Response({"error": "Password is invalid"}, status=400)
+        return Response({"error": "Email or password is invalid"}, status=400)

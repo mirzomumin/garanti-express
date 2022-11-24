@@ -25,6 +25,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 from seller.urls import router as seller_router
+from products.product_category.urls import router as product_category_router
 
 
 schema_view = get_schema_view(
@@ -43,6 +44,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('seller.registration_urls')),
     path('api/v1/', include(seller_router.urls)),
+    path('api/v1/products/', include(product_category_router.urls)),
     path('api/v1/products/', include('products.product.urls')),
 
     # Swagger

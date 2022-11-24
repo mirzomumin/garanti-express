@@ -4,36 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2cdd89c-d165-4541-84f8-72566daaaeb4" name="Changes" comment="add seller registration">
-      <change afterPath="$PROJECT_DIR$/apps/products/product/serializers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/products/product/serializers/create_product.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/products/product/serializers/get_product_detail.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/products/product/serializers/get_product_list.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/products/product/serializers/update_product.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/products/product/views/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/products/product/views/create_product.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/products/product/views/delete_product.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/products/product/views/get_product_detail.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/products/product/views/get_product_list.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/products/product/views/update_product.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/garanti-express.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/products/product/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/products/product/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/products/product/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/products/product/serializers/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/products/product/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/products/product/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/products/product/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/products/product/views/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/seller/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/seller/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/seller/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/seller/serializers.py" afterDir="false" />
+    <list default="true" id="a2cdd89c-d165-4541-84f8-72566daaaeb4" name="Changes" comment="fix and merge all changes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/seller/registration.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/seller/registration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/seller/registration_urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/seller/registration_urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/seller/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/seller/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/my_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/my_settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +101,7 @@
       <workItem from="1668421103034" duration="3815000" />
       <workItem from="1668512477548" duration="599000" />
       <workItem from="1668660841527" duration="1123000" />
-      <workItem from="1668662001584" duration="1349000" />
+      <workItem from="1668662001584" duration="9691000" />
     </task>
     <task id="LOCAL-00001" summary="change structure">
       <created>1668075343022</created>
@@ -162,7 +138,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668661462765</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix and merge all changes">
+      <created>1669026885766</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669026885766</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix and merge all changes">
+      <created>1669027288729</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669027288729</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +178,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="change structure" />
     <MESSAGE value="add seller registration" />
-    <option name="LAST_COMMIT_MESSAGE" value="add seller registration" />
+    <MESSAGE value="fix and merge all changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix and merge all changes" />
   </component>
 </project>

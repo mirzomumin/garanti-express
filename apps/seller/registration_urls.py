@@ -8,5 +8,6 @@ urlpatterns = [
     path('verify/', VerifyOTP.as_view()),
     path('sentotp/', VerifyEmailAPI.as_view()),
     path('resetpassword/', SetNewPasswordAPI.as_view()),
+    path('login/', LoginAPI.as_view()),
 
 ]

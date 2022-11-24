@@ -1,8 +1,10 @@
+import json
+
 from rest_framework import viewsets
+from rest_framework.authtoken.models import Token
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_200_OK, HTTP_201_CREATED
-
 
 from seller.models import Seller, FirmCategory, Country, Region, City, BankInformation
 from .serializers import *
@@ -15,7 +17,8 @@ class SellerViewset(viewsets.ModelViewSet):
 
     @action(methods=['post'], detail=False)
     def post(self, request):
-        data = request.data.get("data")
+        data = request.data
+        # data = json.loads(data_re)
         address = data["addresses"]
         finance_contact = data["finance_contact"]
         manager_contact = data["manager_contact"]
@@ -33,11 +36,12 @@ class SellerViewset(viewsets.ModelViewSet):
         email = data['email']
         user = CustomUser.objects.filter(email=email)
         if user.exists():
-            user.last().legal_name = data['legal_name']
-            user.last().brand_name = data['brand_name']
-            user.last().phone = data['phone_number']
-            user.last().set_password(data['password'])
-            user.last().save()
+            us = user.last()
+            us.legal_name = data['legal_name']
+            us.brand_name = data['brand_name']
+            us.phone = data['phone_number']
+            us.set_password(data['password'])
+            us.save()
         else:
             return Response({"error": "User doesn't exists"}, status=HTTP_400_BAD_REQUEST)
 
@@ -54,8 +58,9 @@ class SellerViewset(viewsets.ModelViewSet):
         manager_contact_instance = manager_contact_serializer.data.get('id')
 
         # Create full seller object
-
+        token, created = Token.objects.get_or_create(user=user.last())
         data['user'] = user.last().id
+        data['token'] = token.key,
         data['addresses'] = address_instances
         data['finance_contact'] = finance_contact_instance
         data['manager_contact'] = manager_contact_instance
@@ -114,24 +119,10 @@ class CountryViewset(viewsets.ModelViewSet):
                 )
         return Response("Created")
 
-    @action(methods=['get'], detail=False)
-    def get_list(self, request):
-        countries = Country.objects.all()
-        serializer = CountrySerializer(countries, many=True)
-        return Response(serializer.data, status=HTTP_200_OK)
-
 
 class RegionViewset(viewsets.ModelViewSet):
     queryset = Region.objects.all()
     serializer_class = RegionSerializer
-
-    @action(methods=['get'], detail=False)
-    def cities(self, request):
-        pk = self.kwargs.get('pk')
-        region = Region.objects.get(id=pk)
-        cities = City.objects.filter(region=region).all()
-        serializer = CitySerializer(cities, many=True)
-        return Response(serializer.data, status=HTTP_200_OK)
 
 
 class CityViewset(viewsets.ModelViewSet):
@@ -144,7 +135,8 @@ class BankInformationViewset(viewsets.ModelViewSet):
     serializer_class = BankInformationSerializer
 
     @action(methods=['get'], detail=False)
-    def get_list(self, request, firm_category_id):
+    def get_list(self, request):
+        firm_category_id = request.GET.get("firm_category_id")
         bank_informations = BankInformation.objects.filter(
             firm_category__id=firm_category_id
         ).all()
