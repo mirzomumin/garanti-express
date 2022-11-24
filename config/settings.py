@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     # Third part apps
     'multiselectfield',
     'phonenumber_field',
+    'drf_yasg',
+    'rest_framework',
 
     # My apps
     'products.product.apps.ProductConfig',

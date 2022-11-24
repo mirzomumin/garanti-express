@@ -1,12 +1,8 @@
 from django.db import models
 
 from helpers.models import BaseModel
-<<<<<<< HEAD:apps/product/models.py
-from product_category.models import Department, Category, Brand
 from seller.models import Seller
-=======
 from products.product_category.models import Department, Category, Brand
->>>>>>> diyorbek:apps/products/product/models.py
 
 # Create your models here.
 

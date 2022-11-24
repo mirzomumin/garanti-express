@@ -62,3 +62,33 @@ class DeliveryTimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = DeliveryTime
         fields = '__all__'
+
+
+class GetBankInformationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BankInformation
+        fields = ('id', 'name', 'firm_category')
+
+
+class GetCitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = City
+        fields = ('id', 'name', 'region')
+
+
+class GetCountrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Country
+        fields = ('id', 'name')
+
+
+class GetFirmCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FirmCategory
+        fields = ('id', 'name')
+
+
+class GetRegionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Region
+        fields = ('id', 'name', 'country')

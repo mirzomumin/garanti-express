@@ -3,6 +3,8 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_200_OK, HTTP_201_CREATED
 
+
+from seller.models import Seller, FirmCategory, Country, Region, City, BankInformation
 from .serializers import *
 from user.models import CustomUser
 
@@ -79,6 +81,12 @@ class FirmCategoryViewset(viewsets.ModelViewSet):
     queryset = FirmCategory.objects.all()
     serializer_class = FirmCategorySerializer
 
+    @action(methods=['get'], detail=False)
+    def get_list(self, request):
+        firm_categories = FirmCategory.objects.all()
+        serializer = GetFirmCategorySerializer(firm_categories, many=True)
+        return Response(serializer.data, status=HTTP_200_OK)
+
 
 class CountryViewset(viewsets.ModelViewSet):
     queryset = Country.objects.all()
@@ -106,10 +114,24 @@ class CountryViewset(viewsets.ModelViewSet):
                 )
         return Response("Created")
 
+    @action(methods=['get'], detail=False)
+    def get_list(self, request):
+        countries = Country.objects.all()
+        serializer = CountrySerializer(countries, many=True)
+        return Response(serializer.data, status=HTTP_200_OK)
+
 
 class RegionViewset(viewsets.ModelViewSet):
     queryset = Region.objects.all()
     serializer_class = RegionSerializer
+
+    @action(methods=['get'], detail=False)
+    def cities(self, request):
+        pk = self.kwargs.get('pk')
+        region = Region.objects.get(id=pk)
+        cities = City.objects.filter(region=region).all()
+        serializer = CitySerializer(cities, many=True)
+        return Response(serializer.data, status=HTTP_200_OK)
 
 
 class CityViewset(viewsets.ModelViewSet):
@@ -120,6 +142,14 @@ class CityViewset(viewsets.ModelViewSet):
 class BankInformationViewset(viewsets.ModelViewSet):
     queryset = BankInformation.objects.all()
     serializer_class = BankInformationSerializer
+
+    @action(methods=['get'], detail=False)
+    def get_list(self, request, firm_category_id):
+        bank_informations = BankInformation.objects.filter(
+            firm_category__id=firm_category_id
+        ).all()
+        serializer = GetBankInformationSerializer(bank_informations, many=True)
+        return Response(serializer.data, status=HTTP_200_OK)
 
 
 class DeliveryCategoryViewset(viewsets.ModelViewSet):
