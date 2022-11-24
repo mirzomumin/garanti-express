@@ -125,9 +125,12 @@ class RegionViewset(viewsets.ModelViewSet):
     queryset = Region.objects.all()
     serializer_class = RegionSerializer
 
-    def get_list(self, request, country_id=None):
-        regions = Region.objects.filter(country__id=country_id).all()
-        serializer = GetRegionSerializer(regions, many=True)
+    @action(methods=['get'], detail=False)
+    def cities(self, request):
+        pk = self.kwargs.get('pk')
+        region = Region.objects.get(id=pk)
+        cities = City.objects.filter(region=region).all()
+        serializer = CitySerializer(cities, many=True)
         return Response(serializer.data, status=HTTP_200_OK)
 
 
@@ -135,16 +138,12 @@ class CityViewset(viewsets.ModelViewSet):
     queryset = City.objects.all()
     serializer_class = CitySerializer
 
-    def get_list(self, request, region_id=None):
-        cities = City.objects.filter(region__id=region_id).all()
-        serializer = CitySerializer(cities, many=True)
-        return Response(serializer.data, status=HTTP_200_OK)
-
 
 class BankInformationViewset(viewsets.ModelViewSet):
     queryset = BankInformation.objects.all()
     serializer_class = BankInformationSerializer
 
+    @action(methods=['get'], detail=False)
     def get_list(self, request, firm_category_id):
         bank_informations = BankInformation.objects.filter(
             firm_category__id=firm_category_id
