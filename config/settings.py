@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'drf_yasg',
     'rest_framework',
+    'rest_framework.authtoken',
 
     # My apps
     'products.product.apps.ProductConfig',

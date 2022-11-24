@@ -1,8 +1,10 @@
+import json
+
 from rest_framework import viewsets
+from rest_framework.authtoken.models import Token
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_200_OK, HTTP_201_CREATED
-
 
 from seller.models import Seller, FirmCategory, Country, Region, City, BankInformation
 from .serializers import *
@@ -15,56 +17,59 @@ class SellerViewset(viewsets.ModelViewSet):
 
     @action(methods=['post'], detail=False)
     def post(self, request):
-        data = request.data.get("data")
-        # address = data["addresses"]
-        # finance_contact = data["finance_contact"]
-        # manager_contact = data["manager_contact"]
-        # # print(address)
-        # address_serializer = AddressSerializer(data=address, many=True)
-        # finance_contact_serializer = ContactSerializer(data=finance_contact)
-        # manager_contact_serializer = ContactSerializer(data=manager_contact)
-        # if not address_serializer.is_valid():
-        #     return Response(address_serializer.errors, status=HTTP_400_BAD_REQUEST)
-        # if not finance_contact_serializer.is_valid():
-        #     return Response(finance_contact_serializer.errors, status=HTTP_400_BAD_REQUEST)
-        # if not manager_contact_serializer.is_valid():
-        #     return Response(manager_contact_serializer.errors, status=HTTP_400_BAD_REQUEST)
-        #
-        # email = data['email']
-        # user = CustomUser.objects.filter(email=email)
-        # if user.exists():
-        #     user.last().legal_name = data['legal_name']
-        #     user.last().brand_name = data['brand_name']
-        #     user.last().phone = data['phone_number']
-        #     user.last().set_password(data['password'])
-        #     user.last().save()
-        # else:
-        #     return Response({"error": "User doesn't exists"}, status=HTTP_400_BAD_REQUEST)
-        #
-        # # Create Instances
-        #
-        # address_serializer.save()
-        # finance_contact_serializer.save()
-        # manager_contact_serializer.save()
-        #
-        # # Get id from Instances
-        #
-        # address_instances = [i.get('id') for i in address_serializer.data]
-        # finance_contact_instance = finance_contact_serializer.data.get('id')
-        # manager_contact_instance = manager_contact_serializer.data.get('id')
-        #
-        # # Create full seller object
-        #
-        # data['user'] = user.last().id
-        # data['addresses'] = address_instances
-        # data['finance_contact'] = finance_contact_instance
-        # data['manager_contact'] = manager_contact_instance
-        # seller_instance = SellerSerializer(data=data)
-        # if seller_instance.is_valid():
-        #     seller_instance.save()
-        #
-        #     return Response(seller_instance.data, status=HTTP_201_CREATED)
-        return Response(data, status=HTTP_400_BAD_REQUEST)
+        data = request.data
+        # data = json.loads(data_re)
+        address = data["addresses"]
+        finance_contact = data["finance_contact"]
+        manager_contact = data["manager_contact"]
+        # print(address)
+        address_serializer = AddressSerializer(data=address, many=True)
+        finance_contact_serializer = ContactSerializer(data=finance_contact)
+        manager_contact_serializer = ContactSerializer(data=manager_contact)
+        if not address_serializer.is_valid():
+            return Response(address_serializer.errors, status=HTTP_400_BAD_REQUEST)
+        if not finance_contact_serializer.is_valid():
+            return Response(finance_contact_serializer.errors, status=HTTP_400_BAD_REQUEST)
+        if not manager_contact_serializer.is_valid():
+            return Response(manager_contact_serializer.errors, status=HTTP_400_BAD_REQUEST)
+
+        email = data['email']
+        user = CustomUser.objects.filter(email=email)
+        if user.exists():
+            us = user.last()
+            us.legal_name = data['legal_name']
+            us.brand_name = data['brand_name']
+            us.phone = data['phone_number']
+            us.set_password(data['password'])
+            us.save()
+        else:
+            return Response({"error": "User doesn't exists"}, status=HTTP_400_BAD_REQUEST)
+
+        # Create Instances
+
+        address_serializer.save()
+        finance_contact_serializer.save()
+        manager_contact_serializer.save()
+
+        # Get id from Instances
+
+        address_instances = [i.get('id') for i in address_serializer.data]
+        finance_contact_instance = finance_contact_serializer.data.get('id')
+        manager_contact_instance = manager_contact_serializer.data.get('id')
+
+        # Create full seller object
+        token, created = Token.objects.get_or_create(user=user.last())
+        data['user'] = user.last().id
+        data['token'] = token.key,
+        data['addresses'] = address_instances
+        data['finance_contact'] = finance_contact_instance
+        data['manager_contact'] = manager_contact_instance
+        seller_instance = SellerSerializer(data=data)
+        if seller_instance.is_valid():
+            seller_instance.save()
+
+            return Response(seller_instance.data, status=HTTP_201_CREATED)
+        return Response(seller_instance.errors, status=HTTP_400_BAD_REQUEST)
 
 
 class ContactViewset(viewsets.ModelViewSet):
@@ -114,24 +119,10 @@ class CountryViewset(viewsets.ModelViewSet):
                 )
         return Response("Created")
 
-    @action(methods=['get'], detail=False)
-    def get_list(self, request):
-        countries = Country.objects.all()
-        serializer = CountrySerializer(countries, many=True)
-        return Response(serializer.data, status=HTTP_200_OK)
-
 
 class RegionViewset(viewsets.ModelViewSet):
     queryset = Region.objects.all()
     serializer_class = RegionSerializer
-
-    @action(methods=['get'], detail=False)
-    def cities(self, request):
-        pk = self.kwargs.get('pk')
-        region = Region.objects.get(id=pk)
-        cities = City.objects.filter(region=region).all()
-        serializer = CitySerializer(cities, many=True)
-        return Response(serializer.data, status=HTTP_200_OK)
 
 
 class CityViewset(viewsets.ModelViewSet):
@@ -144,7 +135,8 @@ class BankInformationViewset(viewsets.ModelViewSet):
     serializer_class = BankInformationSerializer
 
     @action(methods=['get'], detail=False)
-    def get_list(self, request, firm_category_id):
+    def get_list(self, request):
+        firm_category_id = request.GET.get("firm_category_id")
         bank_informations = BankInformation.objects.filter(
             firm_category__id=firm_category_id
         ).all()
