@@ -1,3 +1,13 @@
+from rest_framework.routers import DefaultRouter
+from .views.views import *
+
+router = DefaultRouter()
+
+router.register('product', ProductViewset, basename='ProductViewset')
+router.register('color', ColorViewset, basename='ColorViewset')
+router.register('product-stock', ProductStockViewset, basename='ProductStockViewset')
+router.register('media', MediaViewset, basename='MediaViewset')
+
 from django.urls import path
 
 from products.product.views.create_product import create_product
